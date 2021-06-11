@@ -14,22 +14,6 @@ const create=async function(req,res){
       quantity,
     })
     res.send("Order placed Successfully");
-    var options={
-      url:"http://localhost:4000/message/send",
-      json:true,
-      body:{
-        message:"Order Placed Successfully",
-        number:"8171101160"
-      }
-    }
-    request.post(options,function(err,res,body){
-      if(err){
-        return console.log(err);
-      }
-      console.log(body);
-    })
-
-
     }catch(error){
       console.log(error)
       return res.json({status:"error"});
@@ -72,20 +56,6 @@ const remove=async function(req,res){
   try{
     const response= await order.deleteOne({_id:orderid});
     res.send("Order Deleted");
-    var options={
-      url:"http://localhost:4000/message/send",
-      json:true,
-      body:{
-        message:"Order Cancelled Successfully",
-        number:"8171101160"
-      }
-    }
-    request.post(options,function(err,res,body){
-      if(err){
-        return console.log(err);
-      }
-      console.log(body);
-    })
   }
   catch(error){
     console.log(error);
@@ -104,21 +74,6 @@ const update=async function(req,res){
       message:"order updated successfully",
       data:response
     });
-    var options={
-      url:"http://localhost:4000/message/send",
-      json:true,
-      body:{
-        message:"Order updated Successfully",
-        number:"8171101160"
-      }
-    }
-    request.post(options,function(err,res,body){
-      if(err){
-        return console.log(err);
-      }
-      console.log(body);
-    })
-    console.log(response);
   }
   catch(err)
   {
